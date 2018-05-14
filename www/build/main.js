@@ -134,12 +134,12 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/dfpires/Documents/ionic/ionic3FireBaseChat/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list no-lines>\n    <button ion item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n      {{user.name}}\n    </button>\n  </ion-list>\n  <button ion-button block (click)="onSignup()"> Sign Up </button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dfpires/Documents/ionic/ionic3FireBaseChat/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/dfpires/Documents/ionic/ionic3FireBaseChat/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list no-lines>\n    Lista de Usuários cadastrados no FireBase <br/>\n    <button ion item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n      {{user.name}}\n    </button>\n  </ion-list>\n  <button ion-button block (click)="onSignup()"> Sign Up </button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dfpires/Documents/ionic/ionic3FireBaseChat/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_user_user__["a" /* UserProvider */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_user_user__["a" /* UserProvider */]])
     ], HomePage);
     return HomePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -183,20 +183,22 @@ var SignupPage = /** @class */ (function () {
         });
     }
     SignupPage.prototype.onSubmit = function () {
-        var uuid = "000";
+        var uuid = Math.round((Math.random() * 100)).toString();
         this.userProvider.create(this.signupForm.value, uuid)
             .then(function () {
-            console.log('Usuario cadastrado com sucesso');
+            console.log('Usuario cadastrado com sucesso ' + uuid);
         });
     };
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-signup',template:/*ion-inline-start:"/Users/dfpires/Documents/ionic/ionic3FireBaseChat/src/pages/signup/signup.html"*/'<!--\n  Generated template for the SignupPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Sign Up</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <h1 text-center>\n    <ion-icon class="auth-icon" name="person-add" color="primary"> </ion-icon>\n  </h1>\n  <form [formGroup]="signupForm" (ngSubmit) = "onSubmit(); $event.preventDefault()">\n\n    <ion-item>\n      <ion-icon name="person" item-left> </ion-icon>\n      <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-icon name="at" item-left> </ion-icon>\n        <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>\n    </ion-item>\n\n    <ion-item>\n        <ion-icon name="mail" item-left> </ion-icon>\n        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>\n      </ion-item>\n\n      <ion-item>\n          <ion-icon name="lock" item-left> </ion-icon>\n          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>\n        </ion-item>\n\n        <br>\n\n        <button ion-button full type="submit" [disabled]="signupForm.invalid"> Create Account </button>\n\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dfpires/Documents/ionic/ionic3FireBaseChat/src/pages/signup/signup.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_user_user__["a" /* UserProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_user_user__["a" /* UserProvider */]])
     ], SignupPage);
     return SignupPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=signup.js.map

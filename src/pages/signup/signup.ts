@@ -31,10 +31,11 @@ export class SignupPage {
 
 
   onSubmit(): void {
-    let uuid: string = "000";
+
+    let uuid: string = Math.round((Math.random() * 100)).toString();
     this.userProvider.create(this.signupForm.value, uuid)
       .then(() => {
-        console.log('Usuario cadastrado com sucesso');
+        console.log('Usuario cadastrado com sucesso ' + uuid);
       });
   }
 }

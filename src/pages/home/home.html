@@ -9,6 +9,7 @@
 <ion-content padding>
 
   <ion-list no-lines>
+    Lista de Usuários cadastrados no FireBase <br/>
     <button ion item *ngFor="let user of users | async" (click)="onChatCreate(user)">
       {{user.name}}
     </button>
