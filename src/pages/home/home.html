@@ -1,19 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Projeto de Chat com Firebase
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-list no-lines>
+  <ion-list>
     Lista de Usuários cadastrados no FireBase <br/>
     <button ion item *ngFor="let user of users | async" (click)="onChatCreate(user)">
-      {{user.name}}
+      {{user.name}} - {{user.email}}
     </button>
   </ion-list>
   <button ion-button block (click)="onSignup()"> Sign Up </button>
-
 </ion-content>

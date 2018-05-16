@@ -1,8 +1,10 @@
 import { UserProvider } from './../../providers/user/user';
 import { Component } from '@angular/core';
-import {NavController, NavParams } from 'ionic-angular';
+import { AlertController, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { AuthProvider } from '../../providers/auth/auth';
+import * as firebase from 'firebase/app';
+import { HomePage } from './../home/home';
 
 @Component({
   selector: 'page-signup',
@@ -13,6 +15,9 @@ export class SignupPage {
   signupForm: FormGroup
 
   constructor(
+      public alertCtrl: AlertController,
+      public loadingCtrl: LoadingController,
+      public authProvider: AuthProvider,
       public formBuilder: FormBuilder,
       public navCtrl: NavController,
       public navParams: NavParams,
@@ -32,10 +37,79 @@ export class SignupPage {
 
   onSubmit(): void {
 
-    let uuid: string = Math.round((Math.random() * 100)).toString();
-    this.userProvider.create(this.signupForm.value, uuid)
-      .then(() => {
-        console.log('Usuario cadastrado com sucesso ' + uuid);
+    let loading: Loading = this.showLoading();
+    let formUser = this.signupForm.value;
+    let username: string = formUser.username;
+    
+    this.userProvider.userExists(username)
+      .first()
+      .subscribe((userExists: boolean) => {
+
+        if (!userExists) {
+
+          this.authProvider.createAuthUser({
+            email: formUser.email,
+            password: formUser.password
+          }).then((authUser: firebase.User) => {
+
+            delete formUser.password;
+            let uuid: string = authUser.uid;
+
+            this.userProvider.create(formUser, uuid)
+              .then(() => {
+                console.log('Usuario cadastrado!');
+                this.navCtrl.setRoot(HomePage);
+                loading.dismiss();
+              }).catch((error: any) => {
+                console.log(error);
+                loading.dismiss();
+                this.showAlert(error);
+              });
+
+          }).catch((error: any) => {
+            console.log(error);
+            loading.dismiss();
+            this.showAlert(error);
+          });
+
+        } else {
+
+          this.showAlert(`O username ${username} já está sendo usado em outra conta!`);
+          loading.dismiss();
+
+        }
+
       });
+
+
+
+
+
+
+
+
+
+    //this.userProvider.create(this.signupForm.value, uuid)
+    //  .then(() => {
+    //    console.log('Usuario cadastrado com sucesso ' + uuid);
+    //  });
   }
+
+  private showLoading(): Loading {
+    let loading: Loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
+
+    return loading;
+  }
+
+  private showAlert(message: string): void {
+    this.alertCtrl.create({
+      message: message,
+      buttons: ['Ok']
+    }).present();
+  }
+
 }

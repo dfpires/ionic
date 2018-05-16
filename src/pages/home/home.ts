@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { User } from '../../models/user.model';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -31,4 +32,6 @@ export class HomePage {
   onChatCreate(user: User): void{
     console.log('User ', user);
   }
+
+  
 }

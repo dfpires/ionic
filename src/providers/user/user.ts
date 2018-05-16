@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { BaseService } from '../base.service';
+import { map } from 'rxjs/operators/map';
 
 /*
   Generated class for the UserProvider provider.
@@ -34,6 +35,18 @@ export class UserProvider  extends BaseService{
   create(user: User, uuid: string): Promise<void>{
     return this.db.object(`/users/${uuid}`)
       .set(user)
+      .catch(this.handlePromiseError);
+  }
+
+  userExists(username: string): Observable<boolean> {
+    return this.db.list(`/users`, 
+      (ref: firebase.database.Reference) => ref.orderByChild('username').equalTo(username)
+    )
+    .valueChanges()
+    .map((users: User[]) => {
+      console.log(" Tamanho " + users.length)
+      return users.length > 0;
+    }).catch(this.handleObservableError);
   }
 
 }
