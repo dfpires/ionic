@@ -18,24 +18,24 @@
   <h1 text-center>
     <ion-icon class="auth-icon" name="person-add" color="primary"> </ion-icon>
   </h1>
-  <form (ngSubmit) = "onSubmit(); $event.preventDefault()">
+  <form [formGroup]="signinForm" (ngSubmit) = "onSubmit(); $event.preventDefault()">
 
     <ion-item>
         <ion-icon name="mail" item-left> </ion-icon>
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item>
           <ion-icon name="lock" item-left> </ion-icon>
-          <ion-input type="password" placeholder="Password"></ion-input>
+          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
         </ion-item>
 
         <br>
 
-        <button ion-button full type="submit"> Enter </button>
+        <button ion-button full type="submit" [disabled]="signinForm.invalid"> Enter </button>
 
   </form>
 
-  <button ion-button full type="submit" (click)="onSignup()"> Sign Up </button>
+  <button ion-button full clear text-center (click)="onSignup()"> Sign Up </button>
 
 </ion-content>

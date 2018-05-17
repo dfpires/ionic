@@ -20,11 +20,11 @@ import { UserProvider } from '../providers/user/user';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
-  apiKey: "AIzaSyAmYLsF5UCyOt7yvBkSZTWCx4iNP9GqOsM",
-    authDomain: "ionic3-chat-c87d8.firebaseapp.com",
-    databaseURL: "https://ionic3-chat-c87d8.firebaseio.com",
-    storageBucket: "ionic3-chat-c87d8.appspot.com",
-    messagingSenderId: "264980668445"
+  apiKey: "AIzaSyAGEIaAm8ZNwRCnUs98W_yUZDgqcjiBlNg",
+  authDomain: "ionic3-firebase-82407.firebaseapp.com",
+  databaseURL: "https://ionic3-firebase-82407.firebaseio.com",
+  storageBucket: "ionic3-firebase-82407.appspot.com",
+  messagingSenderId: "587642685324"
 }
 
 @NgModule({
