@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import {AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
 import { AuthProvider } from '../providers/auth/auth';
 
 import { MyApp } from './app.component';
@@ -17,6 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { UserProvider } from '../providers/user/user';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -27,8 +27,10 @@ const firebaseAppConfig: FirebaseAppConfig = {
   messagingSenderId: "587642685324"
 }
 
+
 @NgModule({
   declarations: [
+    CustomLoggedHeaderComponent,
     MyApp,
     HomePage,
     SignupPage,

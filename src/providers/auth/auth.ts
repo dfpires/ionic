@@ -24,4 +24,29 @@ export class AuthProvider extends BaseService{
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .catch(this.handlePromiseError);
   }
+
+  
+  signinWithEmail(user: {email: string, password: string}): Promise<boolean> {
+    return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+      .then((authUser: firebase.User) => {
+          return authUser != null;
+      }).catch(this.handlePromiseError);
+  }
+
+
+  logout(): Promise<any> {
+    return this.afAuth.auth.signOut();
+  }
+
+  get authenticated(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.afAuth
+        .authState
+        .first()
+        .subscribe((authUser: firebase.User) => {
+          (authUser) ? resolve(true) : reject(false);
+        });
+    });
+  }
+
 }

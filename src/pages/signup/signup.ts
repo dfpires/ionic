@@ -80,19 +80,6 @@ export class SignupPage {
         }
 
       });
-
-
-
-
-
-
-
-
-
-    //this.userProvider.create(this.signupForm.value, uuid)
-    //  .then(() => {
-    //    console.log('Usuario cadastrado com sucesso ' + uuid);
-    //  });
   }
 
   private showLoading(): Loading {
