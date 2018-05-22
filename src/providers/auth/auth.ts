@@ -20,12 +20,15 @@ export class AuthProvider extends BaseService{
     console.log('Hello AuthProvider Provider');
   }
 
+  // cria uma autenticação com email e senha
+  // retorna o UID da autenticação
   createAuthUser(user: {email: string, password: string}): Promise<firebase.User> {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .catch(this.handlePromiseError);
   }
 
-  
+  // login ou sign - entrada no sistema
+  // retorna true se entrou e false se não entrou
   signinWithEmail(user: {email: string, password: string}): Promise<boolean> {
     return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then((authUser: firebase.User) => {
@@ -33,11 +36,12 @@ export class AuthProvider extends BaseService{
       }).catch(this.handlePromiseError);
   }
 
-
+// logout - encerra a aplicação
   logout(): Promise<any> {
     return this.afAuth.auth.signOut();
   }
 
+// verifica se usuário está autenticado no Firebase
   get authenticated(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.afAuth

@@ -45,17 +45,17 @@ export class SignupPage {
       .first()
       .subscribe((userExists: boolean) => {
 
-        if (!userExists) {
+        if (!userExists) { // username não existe - pode criar
 
-          this.authProvider.createAuthUser({
+          this.authProvider.createAuthUser({ // cria autenticação
             email: formUser.email,
             password: formUser.password
-          }).then((authUser: firebase.User) => {
+          }).then((authUser: firebase.User) => { // recupera UID
 
             delete formUser.password;
             let uuid: string = authUser.uid;
 
-            this.userProvider.create(formUser, uuid)
+            this.userProvider.create(formUser, uuid) // cria usuário
               .then(() => {
                 console.log('Usuario cadastrado!');
                 this.navCtrl.setRoot(HomePage);

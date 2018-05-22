@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { User } from '../../models/user.model';
 import { Observable } from 'rxjs/Observable';
+import { ChatPage } from '../chat/chat';
 
 
 @Component({
@@ -38,6 +39,9 @@ export class HomePage {
 
   onChatCreate(user: User): void{
     console.log('User ', user);
+    this.navCtrl.push(ChatPage, {
+      recipientUser: user
+    });
   }
 
   onLogout(): void {

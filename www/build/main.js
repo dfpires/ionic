@@ -1,15 +1,15 @@
 webpackJsonp([0],{
 
-/***/ 186:
+/***/ 187:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SigninPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(26);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -98,16 +98,17 @@ var SigninPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 187:
+/***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_user_user__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_user_user__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signup_signup__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chat_chat__ = __webpack_require__(425);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -117,6 +118,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -140,13 +142,16 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.onChatCreate = function (user) {
         console.log('User ', user);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__chat_chat__["a" /* ChatPage */], {
+            recipientUser: user
+        });
     };
     HomePage.prototype.onLogout = function () {
         this.authProvider.logout();
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/dfpires/Documents/ionic/Ionic3FirebaseChat/src/pages/home/home.html"*/'<ion-header>\n  \n  <custom-logged-header [title]="view"> </custom-logged-header>\n  <ion-toolbar>\n\n    <ion-segment [(ngModel)]="view">\n      <ion-segment-button value="chats">\n        Chats\n      </ion-segment-button>\n      <ion-segment-button value="users">\n        Users\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div [ngSwitch]="view">\n      <ion-list *ngSwitchCase="\'chats\'" no-lines>\n          <ion-item> Chats</ion-item>\n      </ion-list>\n      <ion-list *ngSwitchCase="\'users\'" no-lines>\n          <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n            {{user.name}} - {{user.email}}\n          </button>\n      </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dfpires/Documents/ionic/Ionic3FirebaseChat/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/dfpires/Documents/ionic/Ionic3FirebaseChat/src/pages/home/home.html"*/'<ion-header>\n  \n  <custom-logged-header [title]="view | capitalize:true"> </custom-logged-header>\n  \n  <ion-toolbar>\n\n    <ion-segment [(ngModel)]="view">\n      <ion-segment-button value="chats">\n        Chats\n      </ion-segment-button>\n      <ion-segment-button value="users">\n        Users\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div [ngSwitch]="view">\n      <ion-list *ngSwitchCase="\'chats\'" no-lines>\n          <ion-item> Chats</ion-item>\n      </ion-list>\n      <ion-list *ngSwitchCase="\'users\'" no-lines>\n          <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n            {{user.name}} - {{user.email}}\n          </button>\n      </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/dfpires/Documents/ionic/Ionic3FirebaseChat/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__["a" /* AuthProvider */],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */],
@@ -159,7 +164,7 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 188:
+/***/ 189:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -167,6 +172,7 @@ var HomePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(298);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_service__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(161);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -189,6 +195,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /*
   Generated class for the UserProvider provider.
 
@@ -197,20 +204,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 */
 var UserProvider = /** @class */ (function (_super) {
     __extends(UserProvider, _super);
-    function UserProvider(db) {
+    function UserProvider(db, afAuth) {
         var _this = _super.call(this) || this;
         _this.db = db;
+        _this.afAuth = afAuth;
         _this.list();
+        _this.listenAuthState();
         return _this;
     }
+    // lista os usuário do Firebase
     UserProvider.prototype.list = function () {
         this.users = this.mapListKeys(this.db.list("/users", function (ref) { return ref.orderByChild('name'); }));
     };
+    // cria um usuário no RealTime DataBase com o UID da autenticação
     UserProvider.prototype.create = function (user, uuid) {
         return this.db.object("/users/" + uuid)
             .set(user)
             .catch(this.handlePromiseError);
     };
+    // verifica se o username utilizado no cadastro já existe
     UserProvider.prototype.userExists = function (username) {
         return this.db.list("/users", function (ref) { return ref.orderByChild('username').equalTo(username); })
             .valueChanges()
@@ -219,9 +231,22 @@ var UserProvider = /** @class */ (function (_super) {
             return users.length > 0;
         }).catch(this.handleObservableError);
     };
+    UserProvider.prototype.listenAuthState = function () {
+        var _this = this;
+        this.afAuth
+            .authState
+            .subscribe(function (authUser) {
+            if (authUser) {
+                console.log('Auth state alterado!');
+                _this.currentUser = _this.db.object("/users/" + authUser.uid);
+                // this.setUsers(authUser.uid);
+            }
+        });
+    };
     UserProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */]])
     ], UserProvider);
     return UserProvider;
 }(__WEBPACK_IMPORTED_MODULE_2__base_service__["a" /* BaseService */]));
@@ -230,17 +255,17 @@ var UserProvider = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ 189:
+/***/ 190:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_user_user__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_user_user__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(188);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -288,7 +313,7 @@ var SignupPage = /** @class */ (function () {
                 }).then(function (authUser) {
                     delete formUser.password;
                     var uuid = authUser.uid;
-                    _this.userProvider.create(formUser, uuid)
+                    _this.userProvider.create(formUser, uuid) // cria usuário
                         .then(function () {
                         console.log('Usuario cadastrado!');
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
@@ -342,7 +367,7 @@ var SignupPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 200:
+/***/ 201:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -355,11 +380,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 200;
+webpackEmptyAsyncContext.id = 201;
 
 /***/ }),
 
-/***/ 245:
+/***/ 246:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -372,7 +397,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 245;
+webpackEmptyAsyncContext.id = 246;
 
 /***/ }),
 
@@ -382,7 +407,7 @@ webpackEmptyAsyncContext.id = 245;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(538);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(539);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs__);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -438,9 +463,66 @@ var BaseService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(46);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the ChatPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ChatPage = /** @class */ (function () {
+    function ChatPage(authProvider, navCtrl, navParams) {
+        this.authProvider = authProvider;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.messages = [];
+    }
+    ChatPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ChatPage');
+    };
+    ChatPage.prototype.ionViewCanEnter = function () {
+        return this.authProvider.authenticated;
+    };
+    ChatPage.prototype.sendMessage = function (newMessage) {
+        this.messages.push(newMessage);
+    };
+    ChatPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/dfpires/Documents/ionic/Ionic3FirebaseChat/src/pages/chat/chat.html"*/'<ion-header>\n\n  <custom-logged-header [title]="\'Chat\' | capitalize: true"></custom-logged-header>\n\n</ion-header>\n\n\n<ion-content padding>\n\n    <ion-list no-lines> \n      <ion-item *ngFor="let m of messages"> {{ m }}</ion-item>\n    </ion-list>\n\n  </ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n    <ion-item no-lines>\n\n      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage=\'\'" placeholder="Message..." [(ngModel)]="newMessage">\n      </ion-input>\n\n      <button ion-button item-end (click)="sendMessage(newMessage); newMessage=\'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n   \n    </ion-item>\n  \n  </ion-toolbar>\n\n</ion-footer>\n'/*ion-inline-end:"/Users/dfpires/Documents/ionic/Ionic3FirebaseChat/src/pages/chat/chat.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */]])
+    ], ChatPage);
+    return ChatPage;
+}());
+
+//# sourceMappingURL=chat.js.map
+
+/***/ }),
+
+/***/ 426:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(426);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(431);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -448,7 +530,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 430:
+/***/ 431:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -456,25 +538,29 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_auth__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_database__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(794);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_signin_signin__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_user_user__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_custom_logged_header_custom_logged_header__ = __webpack_require__(795);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_auth_auth__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(795);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_signin_signin__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_user_user__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_custom_logged_header_custom_logged_header__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pipes_capitalize_capitalize__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_chat_chat__ = __webpack_require__(425);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -504,6 +590,8 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
+                __WEBPACK_IMPORTED_MODULE_17__pages_chat_chat__["a" /* ChatPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pipes_capitalize_capitalize__["a" /* CapitalizePipe */],
                 __WEBPACK_IMPORTED_MODULE_15__components_custom_logged_header_custom_logged_header__["a" /* CustomLoggedHeaderComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_home_home__["a" /* HomePage */],
@@ -522,6 +610,7 @@ var AppModule = /** @class */ (function () {
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
+                __WEBPACK_IMPORTED_MODULE_17__pages_chat_chat__["a" /* ChatPage */],
                 __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_13__pages_signup_signup__["a" /* SignupPage */],
@@ -543,14 +632,14 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 73:
+/***/ 55:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_service__ = __webpack_require__(339);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -590,20 +679,26 @@ var AuthProvider = /** @class */ (function (_super) {
         console.log('Hello AuthProvider Provider');
         return _this;
     }
+    // cria uma autenticação com email e senha
+    // retorna o UID da autenticação
     AuthProvider.prototype.createAuthUser = function (user) {
         return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
             .catch(this.handlePromiseError);
     };
+    // login ou sign - entrada no sistema
+    // retorna true se entrou e false se não entrou
     AuthProvider.prototype.signinWithEmail = function (user) {
         return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
             .then(function (authUser) {
             return authUser != null;
         }).catch(this.handlePromiseError);
     };
+    // logout - encerra a aplicação
     AuthProvider.prototype.logout = function () {
         return this.afAuth.auth.signOut();
     };
     Object.defineProperty(AuthProvider.prototype, "authenticated", {
+        // verifica se usuário está autenticado no Firebase
         get: function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
@@ -630,16 +725,16 @@ var AuthProvider = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ 794:
+/***/ 795:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_signin_signin__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_signin_signin__ = __webpack_require__(187);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -676,15 +771,15 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 795:
+/***/ 796:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomLoggedHeaderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(796);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_component__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(55);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -744,12 +839,12 @@ var CustomLoggedHeaderComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ 796:
+/***/ 797:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_signin_signin__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_signin_signin__ = __webpack_require__(187);
 
 var BaseComponent = /** @class */ (function () {
     function BaseComponent(alertCtrl, authProvider, app, menuCtrl) {
@@ -787,7 +882,46 @@ var BaseComponent = /** @class */ (function () {
 
 //# sourceMappingURL=base.component.js.map
 
+/***/ }),
+
+/***/ 798:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CapitalizePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var CapitalizePipe = /** @class */ (function () {
+    function CapitalizePipe() {
+    }
+    CapitalizePipe.prototype.transform = function (value, onlyFirst) {
+        if (onlyFirst)
+            return value.charAt(0).toUpperCase() + value.substr(1);
+        var words = value.split(' ');
+        var output = '';
+        words.forEach(function (value, index, words) {
+            output += value.charAt(0).toUpperCase() + value.substr(1).toLowerCase() + ' ';
+        });
+        return output;
+    };
+    CapitalizePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
+            name: 'capitalize'
+        }),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], CapitalizePipe);
+    return CapitalizePipe;
+}());
+
+//# sourceMappingURL=capitalize.js.map
+
 /***/ })
 
-},[425]);
+},[426]);
 //# sourceMappingURL=main.js.map
