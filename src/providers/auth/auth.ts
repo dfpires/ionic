@@ -36,7 +36,7 @@ export class AuthProvider extends BaseService{
       }).catch(this.handlePromiseError);
   }
 
-// logout - encerra a aplicação
+// logout - encerra a conexão com o firebase
   logout(): Promise<any> {
     return this.afAuth.auth.signOut();
   }

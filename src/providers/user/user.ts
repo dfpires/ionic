@@ -6,13 +6,6 @@ import * as firebase from 'firebase/app';
 import { BaseService } from '../base.service';
 import { AngularFireAuth } from "angularfire2/auth";
 
-/*
-  Generated class for the UserProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-
 @Injectable()
 export class UserProvider extends BaseService{
 
@@ -25,18 +18,23 @@ export class UserProvider extends BaseService{
        public afAuth: AngularFireAuth
     ) {
         super()
-        this.list()
         this.listenAuthState()
   }
 
-  // lista os usuário do Firebase
-  list(): void {
+  // recupera a lista de usuários e retira usuário logado
+
+  private setUsers(uidToExclude: string): void {
     this.users = this.mapListKeys<User>(
-      this.db.list<User>(`/users`,
+      this.db.list<User>(`/users`, 
         (ref: firebase.database.Reference) => ref.orderByChild('name')
       )
     )
+    .map((users: User[]) => {      
+      // retira o usuário logado da lista
+      return users.filter((user: User) => user.$key !== uidToExclude);
+    });
   }
+
   // cria um usuário no RealTime DataBase com o UID da autenticação
   create(user: User, uuid: string): Promise<void>{
     return this.db.object(`/users/${uuid}`)
@@ -57,6 +55,7 @@ export class UserProvider extends BaseService{
   }
 
 
+  // executado quando usuário faz login
   private listenAuthState(): void {
     this.afAuth
       .authState
@@ -64,7 +63,7 @@ export class UserProvider extends BaseService{
         if (authUser) {
           console.log('Auth state alterado!');          
           this.currentUser = this.db.object(`/users/${authUser.uid}`);
-         // this.setUsers(authUser.uid);
+          this.setUsers(authUser.uid);
         }
       });
   }

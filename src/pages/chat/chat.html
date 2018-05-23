@@ -1,6 +1,6 @@
 <ion-header>
 
-  <custom-logged-header [title]="'Chat' | capitalize: true"></custom-logged-header>
+  <custom-logged-header [title]="pageTitle"></custom-logged-header>
 
 </ion-header>
 
@@ -18,7 +18,8 @@
   <ion-toolbar>
     <ion-item no-lines>
 
-      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage=''" placeholder="Message..." [(ngModel)]="newMessage">
+      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage=''" 
+      placeholder="Message..." [(ngModel)]="newMessage">
       </ion-input>
 
       <button ion-button item-end (click)="sendMessage(newMessage); newMessage=''">
