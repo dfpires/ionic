@@ -39,12 +39,14 @@ export class ChatProvider extends BaseService{
       });
   }
 
+  // cria um objeto de chat no firebase
   create(chat: Chat, userId1: string, userId2: string): Promise<void> {
     return this.db.object<Chat>(`/chats/${userId1}/${userId2}`)
       .set(chat)
       .catch(this.handlePromiseError);
   }
-
+  
+  // retorna o chat criado entre userId1 e userId2
   getDeepChat(userId1: string, userId2: string): AngularFireObject<Chat> {
     return this.db.object<Chat>(`/chats/${userId1}/${userId2}`);
   }

@@ -292,12 +292,14 @@ var HomePage = /** @class */ (function () {
         return this.authProvider.authenticated;
     };
     HomePage.prototype.ionViewDidLoad = function () {
+        // lista de chats do usuário
         this.chats = this.chatProvider.mapListKeys(this.chatProvider.chats)
             .map(function (chats) { return chats.reverse(); });
-        console.log("conteudo dos chats", this.chats);
+        // lista de usuário disponível, tirando eu
         this.users = this.userProvider.users;
     };
     // recebe como parâmetro quem está sendo chamdo
+    // cria os chats
     HomePage.prototype.onChatCreate = function (recipientUser) {
         var _this = this;
         // chama chat e passa o usuário escolhido para fazer char
@@ -323,6 +325,7 @@ var HomePage = /** @class */ (function () {
             recipientUser: recipientUser
         });
     };
+    // abre os chats
     HomePage.prototype.onChatOpen = function (chat) {
         var _this = this;
         var recipientUserId = chat.$key;
@@ -341,12 +344,10 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/daniel/Documents/ionic/Ionic3FirebaseChat/src/pages/home/home.html"*/'<ion-header>\n  \n  <custom-logged-header [title]="view | capitalize:true"> </custom-logged-header>\n  \n  <ion-toolbar>\n\n    <ion-segment [(ngModel)]="view">\n      <ion-segment-button value="chats">\n        Chats\n      </ion-segment-button>\n      <ion-segment-button value="users">\n        Users\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div [ngSwitch]="view">\n      <ion-list *ngSwitchCase="\'chats\'" no-lines>\n          <button ion-item *ngFor="let chat of chats | async" (click) = "onChatOpen(chat)"> \n            <h2> {{ chat.title }}</h2>\n            <p *ngIf="chat.lastMessage"> {{chat.timestamp | date: \'dd/mm/y H:mm\'}} - {{chat.lastMessage}}</p>\n            <p *ngIf="!chat.lastMessage"> no messages </p>\n          </button>\n      </ion-list>\n      <ion-list *ngSwitchCase="\'users\'" no-lines>\n          <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n            {{user.name}} - {{user.email}}\n          </button>\n      </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/daniel/Documents/ionic/Ionic3FirebaseChat/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_chat_chat__["a" /* ChatProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__providers_chat_chat__["a" /* ChatProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_chat_chat__["a" /* ChatProvider */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -414,20 +415,22 @@ var ChatProvider = /** @class */ (function (_super) {
             }
         });
     };
+    // cria um objeto de chat no firebase
     ChatProvider.prototype.create = function (chat, userId1, userId2) {
         return this.db.object("/chats/" + userId1 + "/" + userId2)
             .set(chat)
             .catch(this.handlePromiseError);
     };
+    // retorna o chat criado entre userId1 e userId2
     ChatProvider.prototype.getDeepChat = function (userId1, userId2) {
         return this.db.object("/chats/" + userId1 + "/" + userId2);
     };
     ChatProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object])
     ], ChatProvider);
     return ChatProvider;
+    var _a, _b;
 }(__WEBPACK_IMPORTED_MODULE_1__base_service__["a" /* BaseService */]));
 
 //# sourceMappingURL=chat.js.map
@@ -595,16 +598,20 @@ var ChatPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["c" /* Content */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["c" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["c" /* Content */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["c" /* Content */])
     ], ChatPage.prototype, "content", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
             selector: 'page-chat',template:/*ion-inline-start:"/Users/daniel/Documents/ionic/Ionic3FirebaseChat/src/pages/chat/chat.html"*/'<ion-header>\n\n  <custom-logged-header [title]="pageTitle"></custom-logged-header>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <message-box *ngFor="let m of viewMessages | async" [message]="m" [isFromSender]="(m.userId === sender.$key)"></message-box>\n \n  </ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n    <ion-item no-lines>\n\n      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage=\'\'" \n      placeholder="Message..." [(ngModel)]="newMessage">\n      </ion-input>\n\n      <button ion-button item-end (click)="sendMessage(newMessage); newMessage=\'\'">\n        <ion-icon name="send"></ion-icon>\n      </button>\n   \n    </ion-item>\n  \n  </ion-toolbar>\n\n</ion-footer>\n'/*ion-inline-end:"/Users/daniel/Documents/ionic/Ionic3FirebaseChat/src/pages/chat/chat.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__providers_chat_chat__["a" /* ChatProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_chat_chat__["a" /* ChatProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__providers_message_message__["a" /* MessageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_message_message__["a" /* MessageProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["j" /* NavParams */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_chat_chat__["a" /* ChatProvider */],
+            __WEBPACK_IMPORTED_MODULE_1__providers_message_message__["a" /* MessageProvider */],
+            __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_user_user__["a" /* UserProvider */]])
     ], ChatPage);
     return ChatPage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=chat.js.map
@@ -655,18 +662,21 @@ var MessageProvider = /** @class */ (function (_super) {
         console.log('Hello MessageProvider Provider');
         return _this;
     }
-    MessageProvider.prototype.create = function (message, listMessages) {
-        return Promise.resolve(listMessages.push(message));
+    // cria uma mensagem no Firebase concatenando com as mensagens anteriores
+    MessageProvider.prototype.create = function (nova, listMessages) {
+        return Promise.resolve(listMessages.push(nova));
     };
+    // recupera as mensagens realizadas entre userId1 e userId2
     MessageProvider.prototype.getMessages = function (userId1, userId2) {
         console.log(userId1, userId2);
         return this.db.list("/messages/" + userId1 + "-" + userId2, function (ref) { return ref.limitToLast(30).orderByChild('timestamp'); });
     };
     MessageProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
     ], MessageProvider);
     return MessageProvider;
+    var _a;
 }(__WEBPACK_IMPORTED_MODULE_2__base_service__["a" /* BaseService */]));
 
 //# sourceMappingURL=message.js.map
@@ -940,7 +950,7 @@ var MessageBoxComponent = /** @class */ (function () {
     }
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_message_model__["a" /* Message */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_message_model__["a" /* Message */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models_message_model__["a" /* Message */])
     ], MessageBoxComponent.prototype, "message", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -957,7 +967,6 @@ var MessageBoxComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], MessageBoxComponent);
     return MessageBoxComponent;
-    var _a;
 }());
 
 //# sourceMappingURL=message-box.js.map
@@ -1047,10 +1056,10 @@ var AuthProvider = /** @class */ (function (_super) {
     });
     AuthProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _b || Object])
     ], AuthProvider);
     return AuthProvider;
+    var _a, _b;
 }(__WEBPACK_IMPORTED_MODULE_3__base_service__["a" /* BaseService */]));
 
 //# sourceMappingURL=auth.js.map

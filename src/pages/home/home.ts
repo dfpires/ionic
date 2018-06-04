@@ -35,14 +35,16 @@ export class HomePage {
 
   ionViewDidLoad(){
 
+    // lista de chats do usuário
     this.chats = this.chatProvider.mapListKeys<Chat>(this.chatProvider.chats)
       .map((chats: Chat[]) => chats.reverse());
-    
-    console.log(`conteudo dos chats`, this.chats);
+
+    // lista de usuário disponível, tirando eu
     this.users = this.userProvider.users;
 
   }
   // recebe como parâmetro quem está sendo chamdo
+  // cria os chats
   onChatCreate(recipientUser: User): void{
     // chama chat e passa o usuário escolhido para fazer char
     this.userProvider
@@ -79,6 +81,7 @@ export class HomePage {
     });
   }
 
+  // abre os chats
   onChatOpen(chat: Chat): void {
 
     let recipientUserId: string = chat.$key;
