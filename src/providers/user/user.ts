@@ -68,4 +68,10 @@ export class UserProvider extends BaseService{
       });
   }
 
+  // recupera usuário pelo ID
+  get(userId: string): AngularFireObject<User> {
+    return this.db.object<User>(`/users/${userId}`);
+  }
+
+
 }

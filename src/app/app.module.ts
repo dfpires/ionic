@@ -1,3 +1,4 @@
+import { MessageBoxComponent } from './../components/message-box/message-box';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -20,6 +21,7 @@ import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/
 import { CapitalizePipe } from '../pipes/capitalize/capitalize';
 import { ChatPage } from '../pages/chat/chat';
 import { ChatProvider } from '../providers/chat/chat';
+import { MessageProvider } from '../providers/message/message';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -36,6 +38,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     ChatPage,
     CapitalizePipe,
     CustomLoggedHeaderComponent,
+    MessageBoxComponent,
     MyApp,
     HomePage,
     SignupPage,
@@ -63,7 +66,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
     StatusBar,
     SplashScreen,
     UserProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MessageProvider
   ]
 })
 export class AppModule {}

@@ -7,10 +7,8 @@
 
 <ion-content padding>
 
-    <ion-list no-lines> 
-      <ion-item *ngFor="let m of messages"> {{ m }}</ion-item>
-    </ion-list>
-
+  <message-box *ngFor="let m of viewMessages | async" [message]="m" [isFromSender]="(m.userId === sender.$key)"></message-box>
+ 
   </ion-content>
 
 <ion-footer>

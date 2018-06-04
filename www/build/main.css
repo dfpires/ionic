@@ -25681,3 +25681,34 @@ ion-navbar.toolbar {
 .auth-icon {
   font-size: 7.0em;
 }
+
+message-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+message-box .text {
+  background-color: #efefef;
+  padding: 7px 5px;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 3px #ccc;
+  color: #333;
+}
+
+message-box .text p {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+message-box .text p.timestamp {
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: #999;
+}
+
+message-box .sender-background {
+  background-color: #baf46e;
+}
