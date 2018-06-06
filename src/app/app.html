@@ -1,1 +1,4 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" enabled="false" id="user-menu" persistence="true"> 
+    <user-menu [user]="currentUser"> </user-menu>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>

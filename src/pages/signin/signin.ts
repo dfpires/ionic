@@ -38,10 +38,6 @@ export class SigninPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SigninPage');
-  }
-
   onSubmit(): void{
 
     let loading: Loading = this.showLoading();

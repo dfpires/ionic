@@ -32,7 +32,9 @@ export abstract class BaseComponent implements OnInit {
                         this.authProvider.logout()
                             .then(() => {
                                 this.navCtrl.setRoot(SigninPage);
+                                // desabilita o menu
                                 this.menuCtrl.enable(false, 'user-menu');
+            
                             });
                     }
                 },

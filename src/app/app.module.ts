@@ -1,3 +1,4 @@
+import { ProgressBarComponent } from './../components/progress-bar/progress-bar';
 import { MessageBoxComponent } from './../components/message-box/message-box';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +23,9 @@ import { CapitalizePipe } from '../pipes/capitalize/capitalize';
 import { ChatPage } from '../pages/chat/chat';
 import { ChatProvider } from '../providers/chat/chat';
 import { MessageProvider } from '../providers/message/message';
+import { UserInfoComponent } from '../components/user-info/user-info';
+import { UserMenuComponent } from '../components/user-menu/user-menu';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -43,6 +47,10 @@ const firebaseAppConfig: FirebaseAppConfig = {
     HomePage,
     SignupPage,
     SigninPage,
+    UserInfoComponent,
+    UserMenuComponent,
+    UserProfilePage,
+    ProgressBarComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
@@ -59,6 +67,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     HomePage,
     SignupPage,
     SigninPage,
+    UserProfilePage
   ],
   providers: [
     AuthProvider,

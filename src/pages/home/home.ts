@@ -2,7 +2,7 @@ import { ChatProvider } from './../../providers/chat/chat';
 import { AuthProvider } from './../../providers/auth/auth';
 import { UserProvider } from './../../providers/user/user';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { User } from '../../models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { ChatPage } from '../chat/chat';
@@ -25,7 +25,8 @@ export class HomePage {
         public authProvider: AuthProvider,
         public navCtrl: NavController,
         public userProvider: UserProvider,
-        public chatProvider: ChatProvider) {
+        public chatProvider: ChatProvider,
+        public menuController: MenuController) {
 
   }
 
@@ -41,6 +42,9 @@ export class HomePage {
 
     // lista de usuário disponível, tirando eu
     this.users = this.userProvider.users;
+
+    // habilita o menu depois que usuário estiver logado
+    this.menuController.enable(true, 'user-menu');
 
   }
   // recebe como parâmetro quem está sendo chamdo

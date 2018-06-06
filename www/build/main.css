@@ -25712,3 +25712,42 @@ message-box .text p.timestamp {
 message-box .sender-background {
   background-color: #baf46e;
 }
+
+progress-bar .progress-outer {
+  width: 96%;
+  margin: 10px 2%;
+  padding: 3px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border: 1px solid #dcdcdc;
+  color: #fff;
+  border-radius: 20px;
+}
+
+progress-bar .progress-inner {
+  min-width: 1%;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #32db64;
+}
+
+user-info p {
+  margin-top: -10px;
+}
+
+user-info .round {
+  width: 50%;
+  border-radius: 100%;
+  margin: 25px auto 0 auto;
+}
+
+user-info .custom-background {
+  background-color: #333;
+}
+
+user-info ion-avatar {
+  padding-top: 10px;
+  padding-bottom: 35px;
+}
